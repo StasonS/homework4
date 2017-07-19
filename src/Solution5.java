@@ -9,18 +9,26 @@
 public class Solution5 {
     public static void main(String[] args) {
 
-        f(5);
+        int value = 5;
+        f(value);
+        System.out.println();
+
+        //Решение через метод с двумя параметрами,
+        // т.к. в противном случае не знаю, как зафиксировать константу
+        f(value, value);
     }
 
-    /**
-     * не знаю как решить - необходимо, чтобы отчёт шёл не по убыванию, а по возрастанию
-     * необходимо где-то зафиксировать первое входящее значение входящего параметра
-     * не понимаю как это сделать и не понимаю как решение может быть выполнено по-другому
-     */
     public static void f(int num){
         if (num != 0){
             System.out.print((num/* + 1 - n*/) + " ");
             f(--num);
+        }
+
+    }
+    public static void f(int num, int cnst){
+        if (num != 0){
+            System.out.print((cnst + 1 - num) + " ");
+            f(--num, cnst);
         }
 
     }
