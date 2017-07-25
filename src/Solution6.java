@@ -15,6 +15,31 @@ public class Solution6 {
 
     public static void drawRectangle(int width, int height){
 
+//        Вариант 1 - не работает
+//        while (height != 0) {
+//            if (width > 0) {
+//                System.out.print("+");
+//                drawRectangle(--width, height);
+//            } else {
+//                System.out.println("+");
+//                drawRectangle(width, --height);
+//            }
+//        }
+
+//        Вариант 2 - не работает
+//        if (width > 0){
+//            System.out.print("+");
+//            width--;
+//            drawRectangle(width, height);
+//        }
+//
+//        System.out.println();
+//        height--;
+//        if (height > 0) {
+//            drawRectangle(width, height);
+//        }
 
     }
+
+
 }
