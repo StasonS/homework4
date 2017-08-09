@@ -8,37 +8,26 @@
  */
 public class Solution6 {
 
+    static int i = 0;
+
     public static void main(String[] args) {
 
-        drawRectangle(2, 3);
+        drawRectangle(10, 4);
     }
 
-    public static void drawRectangle(int width, int height){
+    public static void drawRectangle(int x, int y){ // х - по горизонталі, y - по вертикалі
 
-//        Вариант 1 - не работает
-//        while (height != 0) {
-//            if (width > 0) {
-//                System.out.print("+");
-//                drawRectangle(--width, height);
-//            } else {
-//                System.out.println("+");
-//                drawRectangle(width, --height);
-//            }
-//        }
-
-//        Вариант 2 - не работает
-//        if (width > 0){
-//            System.out.print("+");
-//            width--;
-//            drawRectangle(width, height);
-//        }
-//
-//        System.out.println();
-//        height--;
-//        if (height > 0) {
-//            drawRectangle(width, height);
-//        }
-
+        if ((x == 0) && (y == 1)) return; //
+        if (x != 0){ // рухаємось по рядку поки не добігаєм його кінця
+            i++; // збільшуєм лічильник пройдених символів у рядку (в кінці зрівнюється з шириною рядка)
+            System.out.print("x ");
+            drawRectangle(x-1, y); // пересуваємось на 1 позицію в рядку
+        } else { // інакше (при досягненні кінця рядка) перескакуєм на наступний рядок
+            System.out.println(); // перескакуєм на наступний рядок
+            x = i; // зберігаєм ширину рядка для майбутнього проходження
+            i = 0; // обнуляємо лічильник пройдених символів у рядку
+            drawRectangle(x, y-1); // зменшуєм кількість рядків на 1
+        }
     }
 
 

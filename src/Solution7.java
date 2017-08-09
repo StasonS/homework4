@@ -20,61 +20,38 @@ public class Solution7 {
         Scanner sc = new Scanner(System.in);
         System.out.println("Какую задачу вы хотел бы решить (от 1 до 6)?");
         int taskNum = sc.nextInt();
+
         switch (taskNum){
             case 1:{
-                System.out.println("Введите число");
-                int i = sc.nextInt();
-                counter(i);
-                System.out.println(1);
-                repeater();
+                counter();
                 break;
             }
             case 2:{
-                System.out.print("Введите ширину прямоугольника: ");
-                int width = sc.nextInt();
-                System.out.print("Введите высоту прямоугольника: ");
-                int height = sc.nextInt();
-                drawRectangle(width, height);
-                repeater();
+                drawRectangle2();
                 break;
             }
             case 3:{
-                System.out.print("Введите размер стороны квадрата: ");
-                int side = sc.nextInt();
-                drawRectangle(side);
-                repeater();
+                drawRectangle3();
                 break;
             }
             case 4:{
-                System.out.println("Введите два числа");
-                int a = sc.nextInt();
-                int b = sc.nextInt();
-                System.out.println(getMax(a, b));
-                repeater();
+                getMax4();
                 break;
             }
             case 5:{
-                System.out.println("Введите число");
-                int i = sc.nextInt();
-                f(i, i);
-                System.out.println();
-                repeater();
+                counter5();
                 break;
             }
             case 6:{
-                System.out.print("Введите ширину прямоугольника");
-                int width = sc.nextInt();
-                System.out.print("Введите высоту прямоугольника");
-                int height = sc.nextInt();
-                //AAAAAAAAAAAAA
-                repeater();
+                drawRectangle6();
                 break;
             }
         }
     }
+    
     public static void repeater(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Продолжить решать задачи?");
+        System.out.println("Продолжить решать задачи? (y / n)");
         String s = sc.nextLine();
         if (s.equalsIgnoreCase("да") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("y")){
             questionAsker();
@@ -82,14 +59,27 @@ public class Solution7 {
     }
 
     //задача 1
-    public static void counter(int num){
+    public static void counter(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Введите число");
+        int num = sc.nextInt();
+
         for (int i = 0; i < num; i++){
             System.out.print((i + 1) + " ");
         }
+        System.out.println();
+        repeater();
     }
 
     //задача 2
-    public static void drawRectangle(int width, int height){
+    public static void drawRectangle2(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Введите ширину прямоугольника: ");
+        int width = sc.nextInt();
+        System.out.print("Введите высоту прямоугольника: ");
+        int height = sc.nextInt();
 
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
@@ -97,25 +87,38 @@ public class Solution7 {
             }
             System.out.println();
         }
+        repeater();
     }
 
     //задача 3
-    public static void drawRectangle(int side){
+    public static void drawRectangle3(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Введите размер стороны квадрата: ");
+        int side = sc.nextInt();
+
         for (int i = 0; i < side; i++){
             for (int j = 0; j < side; j++){
                 System.out.print("+");
             }
             System.out.println();
         }
+        repeater();
     }
 
     //задача 4
-    public static int getMax(int a, int b){
+    public static void getMax4(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Введите два числа");
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
         int max = Math.max(a, b);
-        return max;
+        System.out.println(max);
+        repeater();
     }
-    public static Number getMax(int a, float f){
+    public static Number getMax4(int a, float f){
         float a1 = a;
         if (a1 > f)
             return a;
@@ -131,5 +134,44 @@ public class Solution7 {
 
     }
 
+    public static void counter5(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите число");
+        int i = sc.nextInt();
+        f(i, i);
+        System.out.println();
+        repeater();
+    }
+
     //задача 6
+
+    static int i = 0;
+
+    static void drawRectangle6(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Введите ширину прямоугольника: ");
+        int width = sc.nextInt();
+        System.out.print("Введите высоту прямоугольника: ");
+        int height = sc.nextInt();
+
+        drawRectangleAction(width, height);
+        System.out.println();
+        repeater();
+    }
+
+    public static void drawRectangleAction(int x, int y){
+
+        if ((x == 0) && (y == 1)) return;
+        if (x != 0){
+            i++;
+            System.out.print("x ");
+            drawRectangleAction(x-1, y);
+        } else {
+            System.out.println();
+            x = i;
+            i = 0;
+            drawRectangleAction(x, y-1);
+        }
+    }
 }
